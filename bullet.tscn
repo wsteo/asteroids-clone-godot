@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btnxfuk845t50"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_ix1ww"]
+[ext_resource type="Texture2D" uid="uid://dbsr22j585mht" path="res://kenney_space-shooter-redux/Spritesheet/sheet.png" id="1_mdsbw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1g7no"]
+radius = 6.0
+height = 36.0
+
+[node name="Bullet" type="RigidBody2D"]
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_ix1ww")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mdsbw")
+region_enabled = true
+region_rect = Rect2(848.512, 738.486, 12.1617, 36.0799)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1g7no")

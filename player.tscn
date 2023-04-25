@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg75obejvk6j8"]
+[gd_scene load_steps=5 format=3 uid="uid://dg75obejvk6j8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_6jc2o"]
 [ext_resource type="Texture2D" uid="uid://dbsr22j585mht" path="res://kenney_space-shooter-redux/Spritesheet/sheet.png" id="1_x5038"]
+[ext_resource type="PackedScene" uid="uid://btnxfuk845t50" path="res://bullet.tscn" id="2_eu77q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ge7sp"]
 size = Vector2(96, 74)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6jc2o")
+bullet_scene = ExtResource("2_eu77q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -18,3 +20,6 @@ region_rect = Rect2(325.519, 739.556, 96.7461, 74.0742)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ge7sp")
+
+[node name="BulletSpawnpoint" type="Node2D" parent="."]
+position = Vector2(44, 0)
