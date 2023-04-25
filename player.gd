@@ -20,7 +20,5 @@ func _physics_process(delta):
 		get_parent().add_child(bullet)
 		bullet.position = $BulletSpawnpoint.global_position
 		bullet.velocity = $BulletSpawnpoint.global_position - position
-	
-	print(transform.get_rotation())
-
+		bullet.rotation = transform.get_rotation()
 

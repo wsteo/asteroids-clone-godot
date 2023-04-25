@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://do2nfulxysuf2"]
+[gd_scene load_steps=5 format=3 uid="uid://do2nfulxysuf2"]
 
+[ext_resource type="Script" path="res://asteroid.gd" id="1_lxvkg"]
 [ext_resource type="Texture2D" uid="uid://dbsr22j585mht" path="res://kenney_space-shooter-redux/Spritesheet/sheet.png" id="1_qpb7u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_altf0"]
 radius = 43.0116
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_napd1"]
+
 [node name="Asteroid" type="RigidBody2D"]
-collision_layer = 3
+collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_lxvkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qpb7u")
@@ -17,3 +21,14 @@ region_rect = Rect2(224.589, 664.488, 99.4566, 81.611)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_altf0")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_napd1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

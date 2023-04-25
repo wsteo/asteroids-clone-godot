@@ -7,15 +7,18 @@
 radius = 6.0
 height = 36.0
 
-[node name="Bullet" type="RigidBody2D"]
+[node name="Bullet" type="RigidBody2D" groups=["bullet"]]
+collision_layer = 3
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_ix1ww")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("1_mdsbw")
 region_enabled = true
 region_rect = Rect2(848.512, 738.486, 12.1617, 36.0799)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1g7no")
