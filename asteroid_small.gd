@@ -9,11 +9,5 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_body_entered(body):
-	pass
-
-func _on_area_2d_area_entered(area):
-	print("Hit")
-	if (area.is_in_group("bullet")):
-		print("Hit")
+func destroy():
+	queue_free()

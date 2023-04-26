@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://clri7pyschcu3"]
+
+[ext_resource type="Script" path="res://asteroid_medium.gd" id="1_ujhg2"]
+[ext_resource type="Texture2D" uid="uid://dbsr22j585mht" path="res://kenney_space-shooter-redux/Spritesheet/sheet.png" id="2_7w2hp"]
+[ext_resource type="PackedScene" uid="uid://d0vv3ryyacq38" path="res://asteroid_small.tscn" id="2_irycu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_altf0"]
+radius = 17.0
+
+[node name="Asteroid_Medium" type="RigidBody2D" groups=["asteroid"]]
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ujhg2")
+asteroid_small_scene = ExtResource("2_irycu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7w2hp")
+region_enabled = true
+region_rect = Rect2(236.928, 452.374, 44.723, 38.9399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_altf0")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cac46bwfb3htl"]
+[gd_scene load_steps=5 format=3 uid="uid://dtbye5eaudsrt"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_achpo"]
 [ext_resource type="PackedScene" uid="uid://dg75obejvk6j8" path="res://player.tscn" id="1_cuhoi"]
-[ext_resource type="PackedScene" uid="uid://do2nfulxysuf2" path="res://asteroid.tscn" id="2_mw4co"]
+[ext_resource type="PackedScene" uid="uid://dy1iggfem4djo" path="res://asteroid_big.tscn" id="2_fwgfd"]
 
 [sub_resource type="Curve2D" id="Curve2D_vjbhg"]
 _data = {
@@ -12,7 +12,7 @@ point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_achpo")
-asteroidScene = ExtResource("2_mw4co")
+asteroidScene = ExtResource("2_fwgfd")
 
 [node name="Player" parent="." instance=ExtResource("1_cuhoi")]
 position = Vector2(566, 294)
