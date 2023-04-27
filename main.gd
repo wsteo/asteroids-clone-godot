@@ -29,4 +29,27 @@ func _on_asteroid_spawn_timer_timeout():
 	
 	add_child(asteroid)
 	
-	
+
+func _on_top_border_area_2d_body_entered(body):
+	if (body.is_in_group("player")):
+		print(body.name)
+		print(body.position.x)
+		var position = body.position
+		body.position = position + Vector2(0,720)
+
+func _on_bottom_border_area_2d_body_entered(body):
+	if (body.is_in_group("player")):
+		print(body.name)
+		print(body.position.x)
+		var position = body.position
+		body.position = position + Vector2(0,-720)
+
+func _on_left_border_area_2d_body_entered(body):
+	if (body.is_in_group("player")):
+		var position = body.position
+		body.position = position + Vector2(1280,0)
+
+func _on_right_border_area_2d_body_entered(body):
+	if (body.is_in_group("player")):
+		var position = body.position
+		body.position = position + Vector2(-1280,0)
