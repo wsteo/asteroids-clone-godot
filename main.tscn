@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtbye5eaudsrt"]
+[gd_scene load_steps=6 format=3 uid="uid://dtbye5eaudsrt"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_achpo"]
 [ext_resource type="PackedScene" uid="uid://dg75obejvk6j8" path="res://player.tscn" id="1_cuhoi"]
@@ -6,15 +6,12 @@
 
 [sub_resource type="Curve2D" id="Curve2D_vjbhg"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -3, 0, 0, 0, 0, 1153, 1, 0, 0, 0, 0, 1150, 644, 0, 0, 0, 0, -7, 644, 0, 0, 0, 0, -2, -3)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -3, 0, 0, 0, 0, 1153, 1, 0, 0, 0, 0, 1154.78, 729, 0, 0, 0, 0, -4.32308, 725, 0, 0, 0, 0, -2, -3)
 }
 point_count = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcj3p"]
-size = Vector2(1372, 55)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eybwq"]
-size = Vector2(29, 772)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6l0k7"]
+size = Vector2(1283, 731)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_achpo")
@@ -24,6 +21,8 @@ asteroidScene = ExtResource("2_fwgfd")
 position = Vector2(566, 294)
 
 [node name="ObjectSpawnPath" type="Path2D" parent="."]
+position = Vector2(-27.9277, -37.709)
+scale = Vector2(1.17332, 1.09699)
 curve = SubResource("Curve2D_vjbhg")
 
 [node name="ObjectSpawnLocation" type="PathFollow2D" parent="ObjectSpawnPath"]
@@ -33,36 +32,12 @@ rotation = 0.00346319
 [node name="AsteroidSpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="TopBorderArea2D" type="Area2D" parent="."]
-position = Vector2(589, -83)
+[node name="PlayArea2D" type="Area2D" parent="."]
+position = Vector2(557, 294)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBorderArea2D"]
-position = Vector2(45, 17.5)
-shape = SubResource("RectangleShape2D_xcj3p")
-
-[node name="BottomBorderArea2D" type="Area2D" parent="."]
-position = Vector2(493, 785)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBorderArea2D"]
-position = Vector2(157, 17.5)
-shape = SubResource("RectangleShape2D_xcj3p")
-
-[node name="LeftBorderArea2D" type="Area2D" parent="."]
-position = Vector2(-68, 5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorderArea2D"]
-position = Vector2(0, 348.5)
-shape = SubResource("RectangleShape2D_eybwq")
-
-[node name="RightBorderArea2D" type="Area2D" parent="."]
-position = Vector2(1334, 21)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorderArea2D"]
-position = Vector2(4.5, 348)
-shape = SubResource("RectangleShape2D_eybwq")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea2D"]
+position = Vector2(82.5, 67.5)
+shape = SubResource("RectangleShape2D_6l0k7")
 
 [connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_asteroid_spawn_timer_timeout"]
-[connection signal="body_entered" from="TopBorderArea2D" to="." method="_on_top_border_area_2d_body_entered"]
-[connection signal="body_entered" from="BottomBorderArea2D" to="." method="_on_bottom_border_area_2d_body_entered"]
-[connection signal="body_entered" from="LeftBorderArea2D" to="." method="_on_left_border_area_2d_body_entered"]
-[connection signal="body_entered" from="RightBorderArea2D" to="." method="_on_right_border_area_2d_body_entered"]
+[connection signal="body_exited" from="PlayArea2D" to="." method="_on_play_area_2d_body_exited"]

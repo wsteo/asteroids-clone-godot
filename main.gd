@@ -1,16 +1,6 @@
 extends Node
 @export var asteroidScene: PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_asteroid_spawn_timer_timeout():
 	var asteroid = asteroidScene.instantiate()
 	
@@ -28,28 +18,17 @@ func _on_asteroid_spawn_timer_timeout():
 	asteroid.linear_velocity = velocity.rotated(direction)
 	
 	add_child(asteroid)
-	
 
-func _on_top_border_area_2d_body_entered(body):
-	if (body.is_in_group("player")):
-		print(body.name)
-		print(body.position.x)
-		var position = body.position
-		body.position = position + Vector2(0,720)
-
-func _on_bottom_border_area_2d_body_entered(body):
-	if (body.is_in_group("player")):
-		print(body.name)
-		print(body.position.x)
-		var position = body.position
-		body.position = position + Vector2(0,-720)
-
-func _on_left_border_area_2d_body_entered(body):
+var MAX_HEIGHT = 750
+var MAX_WIDTH = 1300
+func _on_play_area_2d_body_exited(body):
 	if (body.is_in_group("player")):
 		var position = body.position
-		body.position = position + Vector2(1280,0)
-
-func _on_right_border_area_2d_body_entered(body):
-	if (body.is_in_group("player")):
-		var position = body.position
-		body.position = position + Vector2(-1280,0)
+		if (body.position.x > 1280):
+			body.position = position + Vector2(-MAX_WIDTH, 0)
+		elif (body.position.x < 0):
+			body.position = position + Vector2(MAX_WIDTH, 0)
+		elif (body.position.y > 720):
+			body.position = position + Vector2(0, -MAX_HEIGHT)
+		elif (body.position.y < 0):
+			body.position = position + Vector2(0, MAX_HEIGHT)
