@@ -8,7 +8,7 @@
 radius = 17.0
 
 [node name="Asteroid_Medium" type="RigidBody2D" groups=["asteroid"]]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 0
 gravity_scale = 0.0
 max_contacts_reported = 1

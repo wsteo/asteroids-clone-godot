@@ -13,7 +13,11 @@ func get_input():
 func _physics_process(delta):
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
-	move_and_slide()
+	var collision_info = move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if(collision.get_collider().is_in_group("asteroid")):
+			print("hit asteroid")
 	
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = bullet_scene.instantiate()
