@@ -17,7 +17,8 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if(collision.get_collider().is_in_group("asteroid")):
-			print("hit asteroid")
+			# Player gets destroy
+			pass
 	
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = bullet_scene.instantiate()
